@@ -39,9 +39,13 @@ RUN pecl install apcu-5.1.7 && docker-php-ext-enable apcu
 COPY conf/default.conf /etc/nginx/sites-enabled/default
 COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY conf/www.conf.default /usr/local/etc/php-fpm.d/www.conf.default
-ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
 
+ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
 RUN chown $user:$user /usr/local/bin/composer && chmod 775 /usr/local/bin/composer
+
+ADD https://symfony.com/installer /usr/local/bin/symfony
+RUN chown $user:$user /usr/local/bin/symfony && chmod 775 /usr/local/bin/symfony
+
 
 # Set password and add sudo group to new user
 RUN echo "$user:$user" | chpasswd
