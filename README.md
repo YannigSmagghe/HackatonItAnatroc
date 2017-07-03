@@ -17,10 +17,13 @@ Then execute these following command to enter in php container (back)
 
 `$ docker-compose exec php bash`
 
+(For back-end developers)
+You can execute domain.sh to add hostname for ip container
+
 ## Reminder
 
 - The php container has static ip 172.20.0.10
-- The ndoe container has static ip 172.20.0.11
+- The node container has static ip 172.20.0.11
 
 ### Package, tools, ...
 - php fpm 7.1
