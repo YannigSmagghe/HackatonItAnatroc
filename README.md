@@ -1,6 +1,5 @@
 # HackatonItAnatroc
 Welcome !
-FrontEnd
 Backend
 
 ## Setup project
