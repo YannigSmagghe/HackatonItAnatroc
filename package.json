@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "babel": "babel --presets es2015 ./app/js/main.js -o build/main.bundle.js",
+    "start": "http-server"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.0.0-alpha.6"
+  }
+}
