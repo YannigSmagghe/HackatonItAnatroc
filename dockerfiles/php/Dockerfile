@@ -9,10 +9,7 @@ RUN apt-get clean && apt-get update
 
 RUN apt-get install -y \
         nginx \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
         libxml2-dev \
         zlib1g-dev \
         libicu-dev \
@@ -20,28 +17,18 @@ RUN apt-get install -y \
         libssl-dev \
         nano \
         sudo \
-        libfontconfig1 \
-        libxrender1 \
-        git \
-        python
+        git
 
 RUN docker-php-ext-install -j$(nproc) \
-        exif \
         iconv \
         opcache \
-        bcmath \
-        ctype \
         dom \
         fileinfo \
-        gd \
         gettext \
         intl \
         json \
         mcrypt \
-        mysqli \
         pcntl \
-        pdo \
-        pdo_mysql \
         phar \
         simplexml \
         zip
@@ -49,12 +36,10 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN pecl channel-update pecl
 RUN pecl install apcu-5.1.7 && docker-php-ext-enable apcu
 
-RUN rm /etc/nginx/sites-enabled/default
-
-# Config file and bin
+COPY conf/default.conf /etc/nginx/sites-enabled/default
 COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY conf/www.conf.default /usr/local/etc/php-fpm.d/www.conf.default
-COPY bin/composer /usr/local/bin/composer
+ADD https://getcomposer.org/composer.phar /usr/local/bin/composer
 
 RUN chown $user:$user /usr/local/bin/composer && chmod 775 /usr/local/bin/composer
 
