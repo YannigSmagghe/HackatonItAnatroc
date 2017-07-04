@@ -54,7 +54,7 @@ services:
         ports:
             - "3000:3000"
         volumes:
-            - ./app/example.mysite.front/:/app
+            - ./app/devFront/:/app
         command: "tail -f /dev/null"
         networks:
             static-network:
