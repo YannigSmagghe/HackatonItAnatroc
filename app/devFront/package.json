@@ -6,7 +6,6 @@
   "dependencies": {
     "autoprefixer": "^3.1.0",
     "bootstrap": "^3.3.7",
-    "font-awesome": "4.*",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "3.1.0",
     "gulp-cache": "^0.4.5",
@@ -25,9 +24,10 @@
     "jquery": "~2.2.0"
   },
   "devDependencies": {
+    "font-awesome": "^4.7.0",
     "gulp-watch": "^4.3.5"
   },
-  "scripts" : {
+  "scripts": {
     "start": "http-server -p 3000"
   }
 }
