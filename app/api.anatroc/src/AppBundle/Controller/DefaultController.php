@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Model\velov\VelovParc;
 use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Api\Subway\SubwayTCL;
@@ -21,35 +22,19 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
         $data = $this->get(SubwayTCL::class)->getStations();
-        $apiData->addData($data);
+
+
+        $this->get(Velov::class)->getMainJson();
+        $apiData->setData(array_merge($data, VelovParc::returnFirstsInArray(15)));
+
 
         $serializer = SerializerBuilder::create()->build();
-        $jsonContent = $serializer->serialize($data, 'json');
+        $jsonContent = $serializer->serialize($apiData->getData(), 'json');
 
 
         return new JsonResponse($jsonContent, 200, [], true);
     }
-
-
-    /**
-     * @Route("/velov", name="velov")
-     */
-    public function velovAction(Request $request)
-    {
-        $velov = $this->get(Velov::class);
-        $velov->getMainJson();
-
-
-        die;
-
-    }
-
 }
