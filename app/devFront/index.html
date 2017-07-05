@@ -15,23 +15,59 @@
     <input id="message-accueil"
            onclick='responsiveVoice.speak("Bonjour. Je suis Anatroc. Que puis-je faire pour vous ?", "French Female");'
            type='button' value='voice-accueil'/>
+
+    <marquee id="main-title" direction="down" behavior="slide" scrollamount="9">Mon titre</marquee>
+
+    <section class="menu-container">
+        <div class="dropdown" >
+
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Connexion</a></li>
+                <li><a href="#">Deconexion</a></li>
+                <li><a href="#">Inscriptiopn</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="footer-container">
+        <div class="dropup">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-question fa-2x" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                <li>
+                    <p>Font Awesome CDN is the easiest way to get Font Awesome on your website or app, all with just a single line of code. No downloading or installing!</p>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <p>Since each site gets a unique embed code, you can easily upgrade to the latest version of Font Awesome, all without pushing any code. Easy peasy.</p>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Something else here</a></li>
+
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+</section>
     <section class="input-container">
         <div class="input-group col-lg-12">
             <input id="search-input" type="search" class="form-control box-shadow col-lg-8">
             <span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>
         </div>
     </section>
-
-    <section class="footer-container col-sm-12">
-        <span class="col-sm-offset-10">
-            <i class="fa fa-question-circle fa-5x"></i>
-        </span>
-    </section>
 </section>
 </body>
 <footer>
     <script type="text/javascript" src=""></script>
     <script type="text/javascript" src="./assets/compiled/js/vendor.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
     <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
 </footer>
 </html>
