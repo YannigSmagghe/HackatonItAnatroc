@@ -1,1 +1,1 @@
-$('#message-accueil').trigger('click');
+// $('#message-accueil').trigger('click');
