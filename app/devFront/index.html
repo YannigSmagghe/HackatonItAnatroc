@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="./assets/compiled/css/vendor.min.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
+
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </head>
 <body>
 <section class="main-container col-lg-12 container-fluid">
+    <input id="message-accueil"
+           onclick='responsiveVoice.speak("Bonjour. Je suis Anatroc. Que puis-je faire pour vous ?", "French Female");'
+           type='button' value='voice-accueil'/>
     <section class="input-container">
-    <div class="input-group col-lg-12">
-        <input type="search" class="form-control box-shadow col-lg-8">
-    <span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>
-    </div>
+        <div class="input-group col-lg-12">
+            <input id="search-input" type="search" class="form-control box-shadow col-lg-8">
+            <span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>
+        </div>
     </section>
 
     <section class="footer-container col-sm-12">
         <span class="col-sm-offset-10">
             <i class="fa fa-question-circle fa-5x"></i>
         </span>
-
     </section>
 </section>
 </body>
