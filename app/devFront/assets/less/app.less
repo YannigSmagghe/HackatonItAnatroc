@@ -7,6 +7,10 @@ body {
 }
 @background: #78B2A4;
 @height-fullwidth:100vh;
+@bgTransparent: rgba(255,255,255,0.0);
+@bgTransparentMenu:rgba(255,255,255,0.3);
+@bgTransparentFocus: rgba(255,255,255,0.3);
+@border: 1px solid rgba(25, 13, 13, 0.3);
 .main-container{
   height: @height-fullwidth;
   border: none;
@@ -31,16 +35,17 @@ body {
   .dropdown{
     text-align: left;
     .btn-default{
-      background-color: rgba(255,255,255,0.2);
+      background-color: @bgTransparent;
       margin-top:10px ;
+      border: @border;
     }
     .btn-default[aria-expanded~=true]{
-      background-color: rgba(255,255,255,0.6);
+      background-color: @bgTransparent;
     }
     .dropdown-menu{
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: @bgTransparentMenu;
       li>a:focus, li>a:hover{
-        background-color: rgba(255,255,255,0.3);
+        background-color: @bgTransparentFocus;
       }
     }
   }
@@ -55,20 +60,20 @@ body {
     margin-bottom: 20px;
     margin-right: 20px;
     .btn-default{
-      background-color: rgba(255,255,255,0.2);
+      background-color: @bgTransparent;
       margin-top:10px;
       border-radius: 100%;
-      border: 1px solid rgba(25, 13, 13, 0.3);
+      border: @border;
     }
     .btn-default[aria-expanded~=true]{
-      background-color: rgba(255,255,255,0.6);
+      background-color: @bgTransparent;
     }
 
     .dropdown-menu{
       left: -160px;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: @bgTransparentMenu;
       li>a:focus, li>a:hover{
-        background-color: rgba(255,255,255,0.3);
+        background-color: @bgTransparentFocus;
       }
       p{
         color: #202031;
@@ -105,7 +110,7 @@ body {
   background: rgba(252,252,252,0.03);
   .box-shadow(0 0 0 0 rgba(40,40,40,1) );
   text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
-  .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), border-width 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+ // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), border-width 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
 }
 
 
@@ -113,14 +118,14 @@ body {
   border: 0 solid rgba(90,90,90,1);
   border-bottom-width: 1px;
   .box-shadow(none);
-  .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1));
+ // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1));
 }
 
 
 .form-control:focus {
   border: 0 solid rgba(183,183,183,0);
   border-bottom: 1px solid #5a5a5a;
-  .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+  //.transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
 }
 
 .voice-activation{
