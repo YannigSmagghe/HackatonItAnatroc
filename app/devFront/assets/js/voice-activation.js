@@ -1,0 +1,1 @@
+// $('#message-accueil').trigger('click');

@@ -12,17 +12,23 @@ body {
 @bgTransparentFocus: rgba(255,255,255,0.3);
 @border: 1px solid rgba(25, 13, 13, 0.3);
 @colorPlaceholder : #5a76b6;
+@text-color: rgb(68, 68, 68);
 .main-container{
   height: @height-fullwidth;
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
   border: none;
+  overflow: hidden;
+  z-index: 15;
   font: normal 16px/1 "Times New Roman", Times, serif;
-  color: rgba(255,255,255,1);
+  color: @text-color;
   text-align: center;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  background: -webkit-linear-gradient(-90deg, rgba(168,240,255,1) 0, rgba(0,150,255,1) 100%);
-  background: -moz-linear-gradient(180deg, rgba(168,240,255,1) 0, rgba(0,150,255,1) 100%);
-  background: linear-gradient(180deg, rgba(168,240,255,1) 0, rgba(0,150,255,1) 100%);
   background-position: 50% 50%;
   -webkit-background-origin: padding-box;
   background-origin: padding-box;
@@ -31,13 +37,7 @@ body {
   -webkit-background-size: auto auto;
   background-size: auto auto;
 
-  .disabled_section{
-    display: none;
-  }
-
-  .enable_section{
-    display: block;
-  }
+  // Placeholder
   ::-webkit-input-placeholder { /* Chrome */
     color: @colorPlaceholder;
     opacity: 0.4;
@@ -51,9 +51,8 @@ body {
   }
   :-moz-placeholder { /* Firefox 4 - 18 */
     color: @colorPlaceholder;
-
   }
-
+  //end placeholder
 
   // Menu du haut
   .dropdown{
@@ -107,11 +106,10 @@ body {
   }
   //fin aide en bas à  droite
 
-
-
+  // section connexion
   .connexion-container{
 
-   left: 0px;
+    left: 0px;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -135,14 +133,30 @@ body {
       border: @border;
     }
   }
+  // end section connexion
+
 }
-.input-group{
+
+//Css Title
+
+#main-title {
+  height: 250px;
+  width: 400px;
+  background-color: transparent;
+  font-size: 50pt;
+  color: white;
+  text-align: center;
+}
+
+// End Css Title
+
+// Style input
+.input-group {
   position: fixed;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
   margin: auto;
 
   width: 40%;
@@ -197,6 +211,15 @@ body {
     width: 100%;
     margin-top: 94vh;
   }
+}
+
+  // background
+  canvas {
+    height: 99.53vh;
+    width: 99vw;
+    z-index: 150;
+  }
+  // end background
 }
 
 
