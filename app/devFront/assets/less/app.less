@@ -11,6 +11,7 @@ body {
 @bgTransparentMenu:rgba(255,255,255,0.3);
 @bgTransparentFocus: rgba(255,255,255,0.3);
 @border: 1px solid rgba(25, 13, 13, 0.3);
+@colorPlaceholder : #5a76b6;
 .main-container{
   height: @height-fullwidth;
   border: none;
@@ -29,6 +30,29 @@ body {
   background-clip: border-box;
   -webkit-background-size: auto auto;
   background-size: auto auto;
+
+  .disabled_section{
+    display: none;
+  }
+
+  .enable_section{
+    display: block;
+  }
+  ::-webkit-input-placeholder { /* Chrome */
+    color: @colorPlaceholder;
+    opacity: 0.4;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: @colorPlaceholder;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: @colorPlaceholder;
+
+  }
+  :-moz-placeholder { /* Firefox 4 - 18 */
+    color: @colorPlaceholder;
+
+  }
 
 
   // Menu du haut
@@ -82,6 +106,35 @@ body {
     }
   }
   //fin aide en bas à  droite
+
+
+
+  .connexion-container{
+
+   left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    padding: 34px;
+    position: fixed;
+    margin: auto;
+
+    text-align: center;
+    height: 500px;
+
+    .input-group{
+      position: relative;
+      margin-top: 25px;
+      width: 86%;
+      margin-left: 4px;
+    }
+    .valid-connexion{
+      margin-top: 35px;
+      background-color: @bgTransparent;
+      border: @border;
+    }
+  }
 }
 .input-group{
   position: fixed;

@@ -16,14 +16,15 @@
 
 <section class="main-container col-lg-12 container-fluid">
 
-    <section class="menu-container">
-        <div class="dropdown" >
+    <section class="menu-container col-md-12">
+        <div class="dropdown col-md-1 col-sm-1">
 
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Connexion</a></li>
+                <li><a href="#" id="menu_acceuil">Acceuil</a></li>
+                <li><a href="#" id="menu_connexion">Connexion</a></li>
                 <li><a href="#">Deconexion</a></li>
                 <li><a href="#">Inscriptiopn</a></li>
                 <li role="separator" class="divider"></li>
@@ -40,10 +41,28 @@
         </div>
     </section>
 
+    <section class="connexion-container col-lg-6 col-md-6 col-sm-12" style="display: none">
+
+            <div class="input-group">
+
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+            </div>
 
 
-    <section class="footer-container">
-        <div class="dropup">
+        <div class="input-group">
+
+            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2">
+        </div>
+
+        <button type="button" class="btn btn-default btn-lg valid-connexion">
+             Connexion
+        </button>
+    </section>
+
+
+
+    <section class="footer-container col-md-12">
+        <div class="dropup col-md-1">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-question fa-2x" aria-hidden="true"></i>
             </button>
