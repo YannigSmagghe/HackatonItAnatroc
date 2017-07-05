@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Api\Subway\SubwayTCL;
 use AppBundle\Model\ApiData;
+use AppBundle\Resolver\ApiServiceResolver;
 use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,14 +20,21 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        // Simulation of user input to retrieve related services from his keywords
+        $services = $this->get(ApiServiceResolver::class)->resolveByApiKeyWords(['metro', 'meteo', 'slip']);
+
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
-        $data = $this->get(SubwayTCL::class)->getStations();
-        $apiData->addData($data);
+        foreach ($services as $service) {
+            if ($service instanceof SubwayTCL) {
+                $data = $this->get(SubwayTCL::class)->getStations();
+                $apiData->addData($data);
+            }
+        }
+
 
         $serializer = SerializerBuilder::create()->build();
-        $jsonContent = $serializer->serialize($data, 'json');
-
+        $jsonContent = $serializer->serialize($apiData, 'json');
 
         return new JsonResponse($jsonContent, 200, [], true);
     }

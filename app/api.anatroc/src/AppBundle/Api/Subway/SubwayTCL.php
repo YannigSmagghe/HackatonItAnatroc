@@ -10,10 +10,11 @@ namespace AppBundle\Api\Subway;
 
 
 use AppBundle\Api\AbstractApi;
+use AppBundle\Api\ApiKeywordInterface;
 use AppBundle\Model\Subway\SubwayData;
 use GuzzleHttp\Client;
 
-class SubwayTCL extends AbstractApi
+class SubwayTCL extends AbstractApi implements ApiKeywordInterface
 {
     /**
      * @var string
@@ -44,10 +45,9 @@ class SubwayTCL extends AbstractApi
     public static function getApiKeywords(): array
     {
         return [
-            'temps',
-            'meteo',
-            'pluie',
-            'soleil',
+            'transport',
+            'metro',
+            'tcl',
         ];
     }
 
