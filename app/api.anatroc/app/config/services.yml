@@ -1,7 +1,9 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
+    api:
+        classes:
+            - AppBundle\Api\Subway\SubwayTCL
 
 services:
     # default configuration for services in *this* file
@@ -38,6 +40,12 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    AppBundle\API\Subway\SubwayTCL:
+
+    AppBundle\Api\Subway\SubwayTCL:
       public: true
 
+    AppBundle\Resolver\ApiServiceResolver:
+      public: true
+      arguments:
+        - "@service_container"
+        - "%api%"
