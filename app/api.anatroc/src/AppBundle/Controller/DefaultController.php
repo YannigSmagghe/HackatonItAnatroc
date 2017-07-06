@@ -23,22 +23,24 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // Simulation of user input to retrieve related services from his keywords
-        $services = $this->get(ApiServiceResolver::class)->resolveByApiKeyWords(['metro', 'meteo', 'slip']);
+        $services = $this->get(ApiServiceResolver::class)->resolveByApiKeyWords(['metro', 'meteo', 'slip', 'bike']);
 
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
         foreach ($services as $service) {
             if ($service instanceof SubwayTCL) {
                 $data = $this->get(SubwayTCL::class)->getStations();
-                $apiData->addData($data);
+                $apiData->addData(array_slice($data, 0, 15));
+            }
+            if($service instanceof Velov)
+            {
+                //Define an array of VelovArret object
+                $data = $this->get(Velov::class)->setVelovParc();
+                $nbVeloToSee = 15;
+                //Return the formated data array
+                $apiData->addData(array_slice($data, 0, $nbVeloToSee));
             }
         }
-
-        $this->get(Velov::class)->getMainJson();
-
-
-        $nbVeloToSee = 15;
-        $apiData->setData(array_merge($data, VelovParc::returnFirstsInArray($nbVeloToSee)));
 
 
         $serializer = SerializerBuilder::create()->build();
