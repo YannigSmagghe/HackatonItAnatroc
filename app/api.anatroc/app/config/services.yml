@@ -1,8 +1,13 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
-
+    api:
+        classes:
+            - AppBundle\Api\Transport\GoogleDirection
+            - AppBundle\Service\Velov\Velov
+        google_direction:
+            url: "https://maps.googleapis.com/maps/api/directions/"
+            key: "%google_api_key.direction%"
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -29,8 +34,19 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    AppBundle\API\Subway\SubwayTCL:
+    AppBundle\Service\Velov\Velov:
+        public: true
+
+    AppBundle\Api\Transport\GoogleDirection:
       public: true
+      arguments:
+        - "%api%"
+
+    AppBundle\Resolver\ApiServiceResolver:
+      public: true
+      arguments:
+        - "@service_container"
+        - "%api%"
 
     AppBundle\API\Weather\Weather1:
       public: true
