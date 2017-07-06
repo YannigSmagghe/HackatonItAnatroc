@@ -5,16 +5,19 @@ namespace AppBundle\Service\Velov;
 
 use AppBundle\Model\velov\VelovParc;
 use AppBundle\Model\velov\VelovArret;
+use AppBundle\Api\ApiKeywordInterface;
 
-class Velov
+
+class Velov implements ApiKeywordInterface
 {
-    public function getMainJson()
+    public function setVelovParc()
     {
         $apiNum = 1;
 
         if($apiNum == 1)
         {
             return $this->getFromGrandLyonApi();
+
         }
         else if ($apiNum == 2)
         {
@@ -26,12 +29,12 @@ class Velov
 
 
     /**
-     * @return int
+     * @return array
      *
      * request on https://www.data.gouv.fr/fr/datasets/station-velov-disponibilites-temps-reel/
      * licence ouverte, https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf
      */
-    private function getFromGrandLyonApi()
+    private function getFromGrandLyonApi(): array
     {
         $client = new \GuzzleHttp\Client();
 
@@ -43,7 +46,8 @@ class Velov
 
         $resultsData = json_decode($JSONresult);
 
-        VelovParc::$park = array();
+
+        $parc = array();
         foreach ($resultsData->features as $recordData)
         {
             $arret = new VelovArret();
@@ -57,19 +61,19 @@ class Velov
             $arret->setStatus($recordData->properties->status);
             $arret->setName($recordData->properties->name);
 
-            VelovParc::$park[] = $arret;
+            $parc[] = $arret;
         }
 
-        return 1;
+        return $parc;
     }
 
     /**
-     * @return int
+     * @return array
      *
      * connect on https://public.opendatasoft.com/explore/dataset/station-velov-grand-lyon/information/
      * licence ouverte : https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf
      */
-    private function getFromOpenDataApi()
+    private function getFromOpenDataApi(): array
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->request("GET","https://public.opendatasoft.com/api/records/1.0/search/?dataset=station-velov-grand-lyon&lang=fr&rows=10&geofilter.distance=45.8520930694%2C4.34738897685%2C1000000000");
@@ -81,7 +85,7 @@ class Velov
 
         $resultsData = json_decode($JSONresult);
 
-        VelovParc::$park = array();
+        $parc = array();
         foreach ($resultsData->records as $recordData)
         {
             $arret = new VelovArret();
@@ -94,9 +98,22 @@ class Velov
             $arret->setStatus($recordData->fields->status);
             $arret->setName($recordData->fields->name);
 
-            VelovParc::$park[] = $arret;
+            $parc[] = $arret;
 
         }
-        return 1;
+        return $parc;
+    }
+
+
+    /**
+     * @return array
+     */
+    public static function getApiKeywords(): array
+    {
+        return [
+            'velo',
+            'velov',
+            'bike',
+        ];
     }
 }

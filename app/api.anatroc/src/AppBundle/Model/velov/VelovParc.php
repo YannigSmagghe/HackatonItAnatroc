@@ -9,38 +9,24 @@
 namespace AppBundle\Model\velov;
 
 
-use AppBundle\Api\ApiKeywordInterface;
 
-class VelovParc implements ApiKeywordInterface
+abstract class VelovParc
 {
     static public $park = array();
 
-    static public function returnFirstsInArray($number_record)
+    static public function returnFirstsInArray( int $number_record, array $datas): array
     {
         $result = array();
         for ($i = 0; $i < $number_record; $i++) {
             $data = array();
             $data['type'] = "transport.velov";
             $data['errors'] = array();
-            VelovParc::$park[$i]->returnJson($data['data']);
+            $datas[$i]->returnJson($data['data']);
 
             $result[] = $data;
 
         }
 
         return $result;
-    }
-
-
-    /**
-     * @return array
-     */
-    public static function getApiKeywords(): array
-    {
-        return [
-            'velo',
-            'velov',
-            'bike',
-        ];
     }
 }
