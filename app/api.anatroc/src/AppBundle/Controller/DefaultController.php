@@ -2,10 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Model\velov\VelovParc;
+use AppBundle\Api\Transport\GoogleDirection;
 use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Api\Subway\SubwayTCL;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
 use JMS\Serializer\SerializerBuilder;
@@ -27,13 +26,14 @@ class DefaultController extends Controller
 
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
+
         foreach ($services as $service) {
-            if ($service instanceof SubwayTCL) {
-                $data = $this->get(SubwayTCL::class)->getStations();
-                $apiData->addData(array_slice($data, 0, 15));
+            if ($service instanceof GoogleDirection) {
+                $data = $this->get(GoogleDirection::class)->getDirection();
+                $apiData->addData($data);
             }
-            if($service instanceof Velov)
-            {
+
+            if ($service instanceof Velov) {
                 //Define an array of VelovArret object
                 $data = $this->get(Velov::class)->setVelovParc();
                 $nbVeloToSee = 15;
@@ -41,7 +41,6 @@ class DefaultController extends Controller
                 $apiData->addData(array_slice($data, 0, $nbVeloToSee));
             }
         }
-
 
         $serializer = SerializerBuilder::create()->build();
         $jsonContent = $serializer->serialize($apiData, 'json');
