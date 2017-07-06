@@ -45,24 +45,6 @@ class WeatherData extends ApiData
     /**
      * @return string
      */
-    public function getWind(): string
-    {
-        return $this->data['wind'];
-    }
-
-    /*
-     * @param string $wind
-     * @return WeatherData
-     */
-    public function setWind($wind)
-    {
-        $this->data['wind'] = $wind;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getWindForce(): string
     {
         return $this->data['wind_force'];
