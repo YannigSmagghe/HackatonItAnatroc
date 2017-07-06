@@ -21,7 +21,7 @@ $( document ).ready(function() {
     $.getJSON( "test.json", function( data ) {
         // console.log(data.data[0].type);
         // console.log(data.data[0].data.temperature);
-         console.log(data.data[0].data.temps);
+         //console.log(data.data[0].data.temps);
 
         $('.result_type').text(data.data[0].type);
 
