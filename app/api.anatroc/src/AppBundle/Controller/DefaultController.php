@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Model\velov\VelovParc;
+use AppBundle\Service\Velov\Velov;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Api\Subway\SubwayTCL;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
@@ -9,7 +12,6 @@ use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
 {
@@ -31,6 +33,12 @@ class DefaultController extends Controller
                 $apiData->addData($data);
             }
         }
+
+        $this->get(Velov::class)->getMainJson();
+
+
+        $nbVeloToSee = 15;
+        $apiData->setData(array_merge($data, VelovParc::returnFirstsInArray($nbVeloToSee)));
 
 
         $serializer = SerializerBuilder::create()->build();
