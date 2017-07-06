@@ -4,6 +4,7 @@ parameters:
     api:
         classes:
             - AppBundle\Api\Transport\GoogleDirection
+            - AppBundle\Service\Velov\Velov
         google_direction:
             url: "https://maps.googleapis.com/maps/api/directions/"
             key: "%google_api_key.direction%"
@@ -33,11 +34,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    AppBundle\Service\Velov\Velov:
+        public: true
+
     AppBundle\Api\Transport\GoogleDirection:
       public: true
       arguments:
         - "%api%"
-
 
     AppBundle\Resolver\ApiServiceResolver:
       public: true
