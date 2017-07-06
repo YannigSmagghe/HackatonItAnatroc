@@ -5,6 +5,7 @@ $( document ).ready(function() {
         // $("#search-input").hide();
         $(".input-container").hide();
         $(".result-container").show();
+
     }
     var timer = null;
     $("#search-input").on("keyup", function() {
@@ -20,11 +21,16 @@ $( document ).ready(function() {
     $.getJSON( "test.json", function( data ) {
         // console.log(data.data[0].type);
         // console.log(data.data[0].data.temperature);
-        // console.log(data.data[0].data.ville);
+         //console.log(data.data[0].data.temps);
 
         $('.result_type').text(data.data[0].type);
-        $('.result_temperature').text(data.data[0].data.temperature+'°');
-        $('.result_ville').text(data.data[0].data.ville);
+
+        $(".temps").hide();
+        $("."+data.data[0].data.temps+"").show();
+
+
+        $('.temperature').text(data.data[0].data.temperature+'°');
+        $('.ville').text(data.data[0].data.ville);
     });
 
 
