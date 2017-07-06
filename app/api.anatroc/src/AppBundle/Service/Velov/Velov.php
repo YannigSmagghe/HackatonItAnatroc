@@ -4,7 +4,6 @@ namespace AppBundle\Service\Velov;
 
 
 use AppBundle\Model\velov\VelovParc;
-use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use AppBundle\Model\velov\VelovArret;
 
 class Velov
@@ -15,13 +14,14 @@ class Velov
 
         if($apiNum == 1)
         {
-            $this->getFromGrandLyonApi();
+            return $this->getFromGrandLyonApi();
         }
         else if ($apiNum == 2)
         {
-            $this->getFromOpenDataApi();
+            return $this->getFromOpenDataApi();
         }
-        throw new UnexpectedValueException("Aucune api selectionnée");
+
+        throw new \UnexpectedValueException("Aucune api selectionnée");
     }
 
 

@@ -13,7 +13,7 @@ abstract class AbstractApiData
     /**
      * @var array
      */
-    protected $data = null;
+    protected $data = [];
 
     /**
      * @var string
@@ -70,6 +70,7 @@ abstract class AbstractApiData
     public function addData($data): AbstractApiData
     {
         if (is_array($data) || $data instanceof AbstractApiData) {
+            dump($data);
             if (!is_array($data)) {
                 array_push($this->data, $data);
             } else {
