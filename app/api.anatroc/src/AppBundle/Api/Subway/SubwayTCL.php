@@ -62,7 +62,7 @@ class SubwayTCL extends AbstractApi implements ApiKeywordInterface
 
     public function getStations()
     {
-        $response = $this->getGuzzle()->request("GET",'https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclarret/all.json');
+        $response = $this->getGuzzle()->get('https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclarret/all.json');
         $json = \GuzzleHttp\json_decode($response->getBody()->getContents());
 
         return $this->transformToSubways($json);
