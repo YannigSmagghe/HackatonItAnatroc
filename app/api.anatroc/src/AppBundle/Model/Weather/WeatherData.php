@@ -9,7 +9,15 @@ class WeatherData extends ApiData
     /*
      *
      */
-    protected weatherIndex = array('soleil', 'nuage', 'pluie', 'orage', 'neige');
+    private weatherIndex = ['soleil', 'nuage', 'pluie', 'orage', 'neige'];
+
+    /*
+     *
+     */
+    public function getWeatherIndex(): string
+    {
+        return $this->weatherIndex;
+    }
 
     /**
      * @return integer
