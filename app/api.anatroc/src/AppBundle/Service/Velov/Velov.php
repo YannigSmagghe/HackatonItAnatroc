@@ -23,6 +23,7 @@ class Velov
 
         if($apiNum == 1) {
             $client = new \GuzzleHttp\Client();
+            //$response = $client->request("GET","https://inspire.data.gouv.fr/api/geogw/services/556c63df330f1fcd48345220/feature-types/ms:jcd_jcdecaux.jcdvelov/download?format=GeoJSON&projection=WGS84");
             $response = $client->request("GET","https://inspire.data.gouv.fr/api/geogw/services/556c63df330f1fcd48345220/feature-types/ms:jcd_jcdecaux.jcdvelov/download?format=GeoJSON&projection=WGS84");
 
 
@@ -51,13 +52,14 @@ class Velov
                 $arret = new VelovArret();
 
                 $arret->setAddress($recordData->properties->address);
-                $arret->setBikeStands($recordData->properties->available_bike_stands + $recordData->properties->available_bikes);
+                $arret->setBikeStands($recordData->properties->bike_stands);
                 $arret->setLatitude($recordData->properties->lat);
                 $arret->setLongitude($recordData->properties->lng);
                 $arret->setAddress($recordData->properties->address);
                 $arret->setCommune($recordData->properties->commune);
                 $arret->setStatus($recordData->properties->status);
                 $arret->setName($recordData->properties->name);
+                $arret->setAvailableStand($recordData->properties->available_bike_stands);
                 //$arrets[] = $temp;
                 //dump($arret);
                 VelovParc::$park[] = $arret;

@@ -28,4 +28,17 @@ class VelovParc
 
         return $result;
     }
+
+
+    /**
+     * @return array
+     */
+    public static function getApiKeywords(): array
+    {
+        return [
+            'velo',
+            'velov',
+            'bike',
+        ];
+    }
 }

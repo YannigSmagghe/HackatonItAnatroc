@@ -28,7 +28,10 @@ class DefaultController extends Controller
 
 
         $this->get(Velov::class)->getMainJson();
+
+
         $apiData->setData(array_merge($data, VelovParc::returnFirstsInArray(15)));
+        //$apiData->setData(VelovParc::returnFirstsInArray(15));
 
 
         $serializer = SerializerBuilder::create()->build();

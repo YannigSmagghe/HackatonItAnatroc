@@ -18,6 +18,7 @@ class VelovArret
     private $longitude;
     private $bike_stands;
     private $status;
+    private $availableStand;
 
     /**
      * @return mixed
@@ -131,7 +132,26 @@ class VelovArret
         $this->status = $status;
     }
 
+    /**
+     * @param mixed $availableStand
+     */
+    public function setAvailableStand($availableStand)
+    {
+        $this->availableStand = $availableStand;
+    }
 
+    /*
+     * Return how many bike is available.
+     */
+    public function getAvailableBike()
+    {
+        return $this->bike_stands - $this->availableStand;
+    }
+
+
+    /*
+     *
+     */
     public function returnJson(&$data)
     {
         foreach ($this as $key => $value)
