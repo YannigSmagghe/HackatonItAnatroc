@@ -6,8 +6,13 @@ use AppBundle\Model\ApiData;
 
 class WeatherData extends ApiData
 {
+    /*
+     *
+     */
+    protected weatherIndex = array('soleil', 'nuage', 'pluie', 'orage', 'neige');
+
     /**
-     * @return string
+     * @return integer
      */
     public function getWeather(): string
     {
@@ -20,7 +25,7 @@ class WeatherData extends ApiData
      */
     public function setWeather($weather)
     {
-        $this->data['weather'] = $weather;
+        $this->data['weather'] = $this->weatherIndex[$weather];
         return $this;
     }
 
