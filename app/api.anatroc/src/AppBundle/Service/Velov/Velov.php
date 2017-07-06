@@ -43,22 +43,9 @@ class Velov
 
         $resultsData = json_decode($JSONresult);
 
-
-        //$arrets = [];
-        //$arret = new VelovData();
-        //$arret->setType('transport.velov');
-
         VelovParc::$park = array();
         foreach ($resultsData->features as $recordData)
         {
-            //$temp = clone $arret;
-
-
-
-            //dump($recordData);
-            //$temp->setAddress($recordData->properties->address);
-            //$temp->setBikeStands($recordData->properties->available_bike_stands + $recordData->properties->available_bikes);
-
             $arret = new VelovArret();
 
             $arret->setAddress($recordData->properties->address);
@@ -69,9 +56,7 @@ class Velov
             $arret->setCommune($recordData->properties->commune);
             $arret->setStatus($recordData->properties->status);
             $arret->setName($recordData->properties->name);
-            $arret->setAvailableStand($recordData->properties->available_bike_stands);
-            //$arrets[] = $temp;
-            //dump($arret);
+
             VelovParc::$park[] = $arret;
         }
 
