@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Api\Subway\SubwayTCL;
+use AppBundle\Api\Transport\GoogleDirection;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
 use JMS\Serializer\SerializerBuilder;
@@ -21,13 +21,13 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // Simulation of user input to retrieve related services from his keywords
-        $services = $this->get(ApiServiceResolver::class)->resolveByApiKeyWords(['metro', 'meteo', 'slip']);
+        $services = $this->get(ApiServiceResolver::class)->resolveByApiKeyWords(['voiture', 'meteo', 'slip']);
 
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
         foreach ($services as $service) {
-            if ($service instanceof SubwayTCL) {
-                $data = $this->get(SubwayTCL::class)->getStations();
+            if ($service instanceof GoogleDirection) {
+                $data = $this->get(GoogleDirection::class)->getDirection();
                 $apiData->addData($data);
             }
         }

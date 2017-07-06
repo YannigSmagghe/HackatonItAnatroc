@@ -3,8 +3,10 @@
 parameters:
     api:
         classes:
-            - AppBundle\Api\Subway\SubwayTCL
-
+            - AppBundle\Api\Transport\GoogleDirection
+        google_direction:
+            url: "https://maps.googleapis.com/maps/api/directions/"
+            key: "%google_api_key.direction%"
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -31,8 +33,11 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    AppBundle\Api\Subway\SubwayTCL:
+    AppBundle\Api\Transport\GoogleDirection:
       public: true
+      arguments:
+        - "%api%"
+
 
     AppBundle\Resolver\ApiServiceResolver:
       public: true
