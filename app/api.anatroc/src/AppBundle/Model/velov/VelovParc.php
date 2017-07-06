@@ -9,7 +9,9 @@
 namespace AppBundle\Model\velov;
 
 
-class VelovParc
+use AppBundle\Api\ApiKeywordInterface;
+
+class VelovParc implements ApiKeywordInterface
 {
     static public $park = array();
 
