@@ -1,0 +1,50 @@
+{
+  "errors": [],
+  "type": "main",
+  "data": [
+    {
+      "type": "meteo",
+      "data": {
+        "temperature": 20,
+         "temps" : "Nuageux",
+        "ville" : "Angers"
+      },
+      "errors": []
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Gambetta / Jusserand",
+        "address": "Avenue Jules Jusserand",
+        "commune": "Lyon 3 ème",
+        "latitude": 45.7511315804623,
+        "longitude": 4.85558284913296,
+        "bike_stands": 13,
+        "status": "OPEN",
+        "availableStand": 13
+      }
+    },
+    {
+      "type": "localisation",
+      "errors": [],
+      "data": {
+        "distance": "57.6 km",
+        "duration": "50 mins",
+        "start_address_name": "6 Place Charles Hernu, Villeurbane, 69100, France",
+        "end_address_name": "100 Universal City Plaza, Universal City, CA 91608, USA",
+        "start_location": {
+          "lat": 33.8162219,
+          "lng": -117.9224731
+        },
+        "end_location": {
+          "lat": 34.1339489,
+          "lng": -118.350456
+        }
+     }
+    }
+
+
+  ]
+
+}
