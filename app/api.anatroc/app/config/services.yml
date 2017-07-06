@@ -31,3 +31,6 @@ services:
 
     AppBundle\API\Subway\SubwayTCL:
       public: true
+
+    AppBundle\API\Weather\Weather1:
+      public: true

@@ -4,19 +4,15 @@ namespace AppBundle\Model\Weather;
 
 use AppBundle\Model\ApiData;
 
+
 class WeatherData extends ApiData
 {
     /*
      *
      */
-    private weatherIndex = ['soleil', 'nuage', 'pluie', 'orage', 'neige'];
-
-    /*
-     *
-     */
-    public function getWeatherIndex(): string
+    public static function getWeatherIndex(): array
     {
-        return $this->weatherIndex;
+        return  ['soleil', 'nuage', 'pluie', 'orage', 'neige'];
     }
 
     /**
@@ -33,7 +29,7 @@ class WeatherData extends ApiData
      */
     public function setWeather($index)
     {
-        $this->data['weather'] = $this->weatherIndex[$index];
+        $this->data['weather'] = self::getWeatherIndex()[$index];
         return $this;
     }
 

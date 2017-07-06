@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Api\Subway\SubwayTCL;
+use AppBundle\Api\Weather\Weather1;
 use AppBundle\Model\ApiData;
 use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -22,6 +23,23 @@ class DefaultController extends Controller
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
         $data = $this->get(SubwayTCL::class)->getStations();
+        $apiData->addData($data);
+
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($data, 'json');
+
+
+        return new JsonResponse($jsonContent, 200, [], true);
+    }
+
+    /**
+     * @Route("/weather1", name="weather1")
+     */
+    public function Weather1Action(Request $request)
+    {
+        $apiData = new ApiData();
+        $apiData->setType(self::API_DATA_TYPE);
+        $data = $this->get(Weather1::class)->getWeather();
         $apiData->addData($data);
 
         $serializer = SerializerBuilder::create()->build();

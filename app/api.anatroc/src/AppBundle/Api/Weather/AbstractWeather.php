@@ -10,7 +10,7 @@ namespace AppBundle\Api\Weather;
 
 
 use AppBundle\Api\AbstractApi;
-use AppBundle\Model\Subway\SubwayData;
+use AppBundle\Model\Weather\WeatherData;
 use GuzzleHttp\Client;
 
 abstract class AbstractWeather extends AbstractApi
