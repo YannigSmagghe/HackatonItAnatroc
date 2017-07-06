@@ -18,9 +18,9 @@ $( document ).ready(function() {
     
     //Traitement Json
     $.getJSON( "test.json", function( data ) {
-        console.log(data.data[0].type);
-        console.log(data.data[0].data.temperature);
-        console.log(data.data[0].data.ville);
+        // console.log(data.data[0].type);
+        // console.log(data.data[0].data.temperature);
+        // console.log(data.data[0].data.ville);
 
         $('.result_type').text(data.data[0].type);
         $('.result_temperature').text(data.data[0].data.temperature+'°');
