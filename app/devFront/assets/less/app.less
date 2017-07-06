@@ -74,37 +74,41 @@ body {
   }
   // fin menu du haut
 
-
-  // aide en bas à droite
-  .dropup{
+  .footer-container{
     position: absolute;
     bottom: 0px;
-    right: 0px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    .btn-default{
-      background-color: @bgTransparent;
-      margin-top:10px;
-      border-radius: 100%;
-      border: @border;
-    }
-    .btn-default[aria-expanded~=true]{
-      background-color: @bgTransparent;
-    }
+    // aide en bas à droite
+    .dropup {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+      .btn-default {
+        background-color: @bgTransparent;
+        margin-top: 10px;
+        border-radius: 100%;
+        border: @border;
+      }
+      .btn-default[aria-expanded~=true] {
+        background-color: @bgTransparent;
+      }
 
-    .dropdown-menu{
-      left: -160px;
-      background-color: @bgTransparentMenu;
-      li>a:focus, li>a:hover{
-        background-color: @bgTransparentFocus;
-      }
-      p{
-        color: #202031;
-        padding: 4px 15px;
+      .dropdown-menu {
+        left: -160px;
+        background-color: @bgTransparentMenu;
+        li > a:focus, li > a:hover {
+          background-color: @bgTransparentFocus;
+        }
+        p {
+          color: #202031;
+          padding: 4px 15px;
+        }
       }
     }
+    //fin aide en bas à  droite
   }
-  //fin aide en bas à  droite
+
 
   // section connexion
   .connexion-container{
@@ -135,7 +139,7 @@ body {
   }
   // end section connexion
 
-}
+
 
 //Css Title
 
@@ -201,16 +205,18 @@ body {
   margin-top: -10px;
 }
 
-
-//Footer
-.footer-container{
-  margin-top: 92vh;
-}
-@media (max-width: 768px) {
-  .footer-container {
-    width: 100%;
-    margin-top: 94vh;
+  // message accueil
+  #message-accueil {
+    display: none;
   }
+  // end message accueil
+
+  //result container
+  .result-container {
+    display: none;
+  }
+  //end result container
+
 }
 
   // background
@@ -220,7 +226,7 @@ body {
     z-index: 150;
   }
   // end background
-}
+
 
 
 
