@@ -31,12 +31,17 @@ const vars = {
     },
     lib_css: [
         './node_modules/font-awesome/css/font-awesome.css',
-        './node_modules/bootstrap/dist/css/bootstrap.css'
+        './node_modules/bootstrap/dist/css/bootstrap.css',
+        './node_modules/textillate/assets/animate.css'
+
     ],
     lib_js: [
         './node_modules/jquery/dist/jquery.js',
-        './node_modules/bootstrap/dist/js/bootsrap.js'
-    ]
+        './node_modules/bootstrap/dist/js/bootsrap.js',
+        './node_modules/textillate/assets/jquery.fittext.js',
+        './node_modules/textillate/assets/jquery.lettering.js',
+        './node_modules/textillate/jquery.textillate.js'
+        ]
 };
 
 var path = {

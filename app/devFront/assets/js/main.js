@@ -46,4 +46,21 @@ $( document ).ready(function() {
     });
 
 
+    //title Animation
+
+    $('.tlt').textillate( {
+
+        loop: false,
+        autoStart: true,
+
+        in: {
+            effect: "flipInX",
+            delayScale: 3,
+            delay: 50,
+            sync: false,
+            sequence: true,
+            reverse: false
+        },
+        type: 'char',
+    });
 });
