@@ -20,12 +20,12 @@ class WeatherData extends ApiData
     }
 
     /*
-     * @param string $weather
+     * @param int $index
      * @return WeatherData
      */
-    public function setWeather($weather)
+    public function setWeather($index)
     {
-        $this->data['weather'] = $this->weatherIndex[$weather];
+        $this->data['weather'] = $this->weatherIndex[$index];
         return $this;
     }
 
