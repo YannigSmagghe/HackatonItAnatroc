@@ -25,41 +25,71 @@ $( document ).ready(function() {
     //Traitement Json
 
     $.ajax({
-        url : 'http://api.naptroc/',
+        url : 'http://localhost:8080',
         type : 'GET',
         dataType : 'JSON',
-        success : function(code_html, statut){
-            console.log(code_html + statut)
+        success : function(data){
+
+
+         console.log(data + 'succes');
+
         },
 
-        error : function(resultat, statut, erreur){
-
+        error : function(data){
+            console.log(data + 'erreur');
         },
 
-        complete : function(resultat, statut){
-
-        }
 
     });
+
+    function displayWeather(response) {
+
+        $(".temps").hide();
+        $("#"+response.data.weather+"").show();
+
+
+        $('#temperature').text(response.data.temperature+'°');
+        $('#ville').text(response.data.city);
+
+
+    }
+
+    function displayTransport(response) {
+
+        $('#distance_result').text(response.data.distance);
+        $('#start_address_result').text(response.data.start_address_name);
+       $('#end_address_result').text(response.data.end_address_name);
+        $('#duration_result').text(response.data.duration);
+    }
+    function displayFromResponse(response) {
+
+        for (var i in response) {
+            if (response[i].type == "weather") {
+                displayWeather(response[i]);
+
+            } else if (response[i].type == "transport.google_direction.driving") {
+                displayTransport(response[i]);
+                lat = response[i].data.start_location.lat;
+                lng = response[i].data.start_location.lng;
+
+            }
+        }
+    }
+
+
+
+
 
     $.getJSON( "result.json", function( data ) {
         // console.log(data.data[0].type);
         // console.log(data.data[0].data.temperature);
          //console.log(data.data[0].data.temps);
-
+        displayFromResponse(data.data);
+        displayTransport(data.data);
+        recupLocation(data.data);
         $('.result_type').text(data.data[0].type);
 
-        $(".temps").hide();
-        $("#"+data.data[0].data.temps+"").show();
 
-
-        $('#temperature').text(data.data[0].data.temperature+'°');
-        $('#ville').text(data.data[0].data.ville);
-
-        $('#distance_result').text(data.data[2].data.distance);
-        $('#start_address_result').text(data.data[2].data.start_address_name);
-        $('#end_address_result').text(data.data[2].data.end_address_name);
-        $('#duration_result').text(data.data[2].data.duration);
     });
 
 
@@ -69,7 +99,7 @@ $( document ).ready(function() {
         $(".connexion-container").show();
     });
 
-    $("#menu_acceuil").click(function() {
+    $("#menu_accueil").click(function() {
         $(".connexion-container").hide();
         $(".meteo-container").hide();
         $(".input-container").show();
@@ -80,7 +110,7 @@ $( document ).ready(function() {
 
     function getLocation() {
         if (navigator.geolocation) {
-            console.log("oui");
+
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             alert('Votre navigateur ne supporte pas la geolocalisation')
@@ -120,11 +150,16 @@ $( document ).ready(function() {
 
     var map;
     window.initMap = function() {
+        var myLatLng = {lat: lat, lng: lng};
         map = new google.maps.Map(document.getElementById('map-container'), {
-            center: {lat: 45.7702825, lng: 4.861604 },
-            zoom: 8
+            zoom: 10,
+            center: myLatLng
         });
-
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Vous etes ici!'
+        });
         var styles = [
             {
                 "featureType": "administrative",
@@ -306,7 +341,7 @@ $( document ).ready(function() {
         ]
 
         map.setOptions({styles: styles});
-        geocodeAddress(geocoder, map);
+
     }
 
 

@@ -53,7 +53,14 @@ class DefaultController extends Controller
         $serializer = SerializerBuilder::create()->build();
         $jsonContent = $serializer->serialize($apiData, 'json');
 
-        return new JsonResponse($jsonContent, 200, [], true);
+        return new JsonResponse(
+            $jsonContent,
+            200,
+            [
+                'Access-Control-Allow-Origin' => '*'
+            ],
+            true
+        );
     }
 
     /**
