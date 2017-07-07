@@ -48,5 +48,5 @@ services:
         - "@service_container"
         - "%api%"
 
-    AppBundle\API\Weather\Weather1:
+    AppBundle\API\Weather\WeatherInfoClimat:
       public: true
