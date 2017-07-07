@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Api\Weather\WeatherInfoClimat;
 use AppBundle\Api\Transport\GoogleDirection;
-use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
@@ -12,6 +11,8 @@ use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Model\Velov\VelovParc;
+use AppBundle\Service\Velov\Velov;
 
 class DefaultController extends Controller
 {
@@ -39,7 +40,7 @@ class DefaultController extends Controller
                 $data = $this->get(Velov::class)->setVelovParc();
                 $nbVeloToSee = 15;
                 //Return the formated data array
-                $apiData->addData(array_slice($data, 0, $nbVeloToSee));
+                $apiData->addData(VelovParc::returnFirstsInArray($nbVeloToSee, $data));
             }
 
             if ($service instanceof WeatherInfoClimat) {
