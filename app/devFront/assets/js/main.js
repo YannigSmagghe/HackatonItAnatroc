@@ -16,7 +16,7 @@ $( document ).ready(function() {
         timer = setTimeout(resultPage, 3000);
         return timer;
     });
-    
+
     //Traitement Json
     $.getJSON( "test.json", function( data ) {
         // console.log(data.data[0].type);
@@ -44,23 +44,36 @@ $( document ).ready(function() {
         $(".connexion-container").hide();
         $(".input-container").show();
     });
+});
 
+//Title Animation
 
-    //title Animation
+$(function () {
 
-    $('.tlt').textillate( {
+    $('.tlt').textillate({
 
+        // enable looping
         loop: false,
+
+        // set whether or not to automatically start animating
         autoStart: true,
 
+
+        // in animation settings
         in: {
-            effect: "flipInX",
-            delayScale: 3,
-            delay: 50,
-            sync: false,
-            sequence: true,
-            reverse: false
+                effect: 'flipInX',
+                delayScale: 1.5,
+                delay: 75,
+                sync: false,
+                shuffle: false,
+                reverse: false,
+                callback: function () {}
+
         },
-        type: 'char',
+
+
+
+        // set the type of token to animate (available types: 'char' and 'word')
+        type: 'char'
     });
 });

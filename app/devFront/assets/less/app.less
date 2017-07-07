@@ -99,6 +99,30 @@ body {
   }
   // fin menu du haut
 
+  //Login
+  .login-container{
+    //animation
+    animation: fadein 10s;
+    -moz-animation: fadein 10s; /* Firefox */
+    -webkit-animation: fadein 10s; /* Safari et Chrome */
+    -o-animation: fadein 10s; /* Opera */
+    // fin animation
+    margin-top: 10px;
+    position:absolute;
+    background-color: @bgTransparent;
+    i{
+      font-size: 1.5em;
+    }
+  }
+
+
+
+}
+
+
+
+
+
   .footer-container {
     position: absolute;
     bottom: 0px;
@@ -265,7 +289,6 @@ body {
     }
   }// end CSS Meteo
 
-}
 
 // background
 canvas {
@@ -714,6 +737,8 @@ svg {
   transform-origin: center left;
 }
 
+
+// bug sur le titre en fip in jusqu'à la prochaine marque
 @keyframes sun-grow {
   0%, 90%, 100% {
     transform: scale(0.5);
@@ -877,6 +902,8 @@ svg {
 .venteux .wind-three {
   animation: wind-slide-three 4s infinite;
 }
+
+// bug sur le titre en fip in
 
 @keyframes bob {
   0%, 100% {
