@@ -9,6 +9,7 @@ $( document ).ready(function() {
     }
     var timer = null;
     $("#search-input").on("keyup", function() {
+        console.log(timer);
         if (timer) {
             clearTimeout(timer); //cancel the previous timer.
         }
@@ -50,6 +51,7 @@ $( document ).ready(function() {
     $('.tlt').textillate( {
 
         loop: false,
+
         autoStart: true,
 
         in: {
