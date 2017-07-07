@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Model\velov;
+use AppBundle\Model\Localisation;
 
 /**
  * Created by PhpStorm.
@@ -14,8 +15,7 @@ class VelovArret
     private $name;
     private $address;
     private $commune;
-    private $latitude;
-    private $longitude;
+    private $localisation ;
     private $bike_stands;
     private $status;
     private $availableStand;
@@ -73,31 +73,21 @@ class VelovArret
      */
     public function getLatitude()
     {
-        return $this->latitude;
+        return $this->getLocation()->getLat();
     }
 
-    /**
-     * @param mixed $latitude
-     */
-    public function setLatitude($latitude)
-    {
-        $this->latitude = $latitude;
-    }
 
     /**
      * @return mixed
      */
     public function getLongitude()
     {
-        return $this->longitude;
+        return $this->getLocation()->getLng();
     }
 
-    /**
-     * @param mixed $longitude
-     */
-    public function setLongitude($longitude)
+    public  function setLocalisation(Localisation $loc)
     {
-        $this->longitude = $longitude;
+        $this->localisation = $loc;
     }
 
     /**
@@ -146,6 +136,15 @@ class VelovArret
     public function getAvailableBike()
     {
         return $this->bike_stands - $this->availableStand;
+    }
+
+
+    /**
+     *
+     */
+    public function getLocation():Localisation
+    {
+        return $this->localisation;
     }
 
 
