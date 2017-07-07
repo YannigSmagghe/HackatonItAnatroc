@@ -12,8 +12,8 @@ use AppBundle\Model\Weather\WeatherData;
 
 class Weather1 extends AbstractWeather
 {
-
-
+    // Variable à soustraire à des degrés kelvin pour en faire des degrés celsius
+    const KELVIN_TO_CELSIUS = 273.15;
 
     public function getWeather()
     {
@@ -31,7 +31,7 @@ class Weather1 extends AbstractWeather
 
         $weather->setType($this->getType());
 
-        $weather->setTemperature($json->temperature->sol - 273.15);
+        $weather->setTemperature($json->temperature->sol - KELVIN_TO_CELSIUS);
 
         $weather->setWindForce($json->vent_moyen->{'10m'});
 
