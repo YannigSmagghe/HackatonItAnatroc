@@ -33,6 +33,19 @@
             </ul>
         </div>
     </section>
+    <section id="voice-activation-container">
+        <div id="info">
+        </div>
+        <div class="right">
+            <button id="start_button" onclick="startButton(event)">
+            </button>
+        </div>
+        <div id="div_language">
+            <select id="select_language" onchange="updateCountry()"></select>
+            &nbsp;&nbsp;
+            <select id="select_dialect"></select>
+        </div>
+    </section>
 
     <section class="login-container col-lg-offset-10 col-lg-2">
         <div id="login">
@@ -43,7 +56,13 @@
     <section class="input-container col-lg-12 col-md-12 col-sm-12">
         <h1 id="main-title" class="tlt">Anatroc</h1>
         <div class="input-group col-lg-12 col-md-12 col-sm-12">
-            <input id="search-input" type="search" class="form-control box-shadow col-lg-8">
+            <div id="results">
+                <span id="final_span" class="final"></span>
+                <span id="interim_span" class="interim"></span>
+                <p>
+            </div>
+
+            <input  id="search-input" type="search" class="form-control box-shadow col-lg-8">
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
         </div>
     </section>

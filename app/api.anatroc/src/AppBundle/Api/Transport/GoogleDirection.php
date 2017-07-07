@@ -15,6 +15,12 @@ use AppBundle\Model\Localisation;
 use AppBundle\Model\Transport\TransportData;
 use GuzzleHttp\Client;
 
+/**
+ * Provide direction for driving (for now), with distance, duration, start & end location
+ *
+ * Class GoogleDirection
+ * @package AppBundle\Api\Transport
+ */
 class GoogleDirection extends AbstractApi implements ApiKeywordInterface
 {
     /**
