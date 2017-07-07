@@ -3,13 +3,12 @@ $( document ).ready(function() {
     //send input
     function resultPage() {
         // $("#search-input").hide();
-        $(".input-container").hide();
-        $(".result-container").show();
+        $(".input-container").fadeOut();
+        $(".result-container").fadeIn();
 
     }
     var timer = null;
     $("#search-input").on("keyup", function() {
-        console.log(timer);
         if (timer) {
             clearTimeout(timer); //cancel the previous timer.
         }
@@ -61,6 +60,27 @@ $( document ).ready(function() {
             sequence: true,
             reverse: false
         },
-        type: 'char',
+        type: 'char'
     });
+
+
+    //Swap voice inpu
+    window.setInterval(function(){
+        var voiceSpan = '#interim_span';
+        if ($(voiceSpan).text().length > 0){
+            $('#search-input').hide();
+        }
+
+    }, 1000);
+
+    //Swap to result page
+    window.setInterval(function(){
+        var voiceSpan = '#final_span';
+        if ($(voiceSpan).text().length > 0){
+            resultPage();
+        }
+
+    }, 100);
+
+
 });
