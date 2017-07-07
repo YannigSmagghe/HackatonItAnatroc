@@ -23,6 +23,25 @@ $( document ).ready(function() {
     });
     
     //Traitement Json
+
+    $.ajax({
+        url : 'http://api.naptroc/',
+        type : 'GET',
+        dataType : 'JSON',
+        success : function(code_html, statut){
+            console.log(code_html + statut)
+        },
+
+        error : function(resultat, statut, erreur){
+
+        },
+
+        complete : function(resultat, statut){
+
+        }
+
+    });
+
     $.getJSON( "result.json", function( data ) {
         // console.log(data.data[0].type);
         // console.log(data.data[0].data.temperature);
