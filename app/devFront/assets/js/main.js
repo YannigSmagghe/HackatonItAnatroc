@@ -2,7 +2,6 @@ $( document ).ready(function() {
 
     //send input
     function resultPage() {
-        // $("#search-input").hide();
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
         google.maps.event.trigger(map, 'resize');
