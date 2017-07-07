@@ -36,10 +36,10 @@ $( document ).ready(function() {
         $('#temperature').text(data.data[0].data.temperature+'°');
         $('#ville').text(data.data[0].data.ville);
 
-        $('.distance_result').text(data.data[2].data.distance);
-        $('.start_address_result').text(data.data[2].data.start_address_name);
-        $('.end_address_result').text(data.data[2].data.end_address_name);
-        $('.duration_result').text(data.data[2].data.duration);
+        $('#distance_result').text(data.data[2].data.distance);
+        $('#start_address_result').text(data.data[2].data.start_address_name);
+        $('#end_address_result').text(data.data[2].data.end_address_name);
+        $('#duration_result').text(data.data[2].data.duration);
     });
 
 
