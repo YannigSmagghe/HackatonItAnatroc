@@ -47,3 +47,6 @@ services:
       arguments:
         - "@service_container"
         - "%api%"
+
+    AppBundle\API\Weather\Weather1:
+      public: true

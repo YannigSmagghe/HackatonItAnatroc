@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Api\Weather\Weather1;
 use AppBundle\Api\Transport\GoogleDirection;
 use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -44,6 +45,23 @@ class DefaultController extends Controller
 
         $serializer = SerializerBuilder::create()->build();
         $jsonContent = $serializer->serialize($apiData, 'json');
+
+        return new JsonResponse($jsonContent, 200, [], true);
+    }
+
+    /**
+     * @Route("/weather1", name="weather1")
+     */
+    public function Weather1Action(Request $request)
+    {
+        $apiData = new ApiData();
+        $apiData->setType(self::API_DATA_TYPE);
+        $data = $this->get(Weather1::class)->getWeather();
+        $apiData->addData($data);
+
+        $serializer = SerializerBuilder::create()->build();
+        $jsonContent = $serializer->serialize($data, 'json');
+
 
         return new JsonResponse($jsonContent, 200, [], true);
     }
