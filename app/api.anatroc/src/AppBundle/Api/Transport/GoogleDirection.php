@@ -50,7 +50,7 @@ class GoogleDirection extends AbstractApi implements ApiKeywordInterface
     public function __construct(array $parameters)
     {
         $this->parameters = $parameters['google_direction'];
-        $this->guzzle = new Client();
+        $this->guzzle = new Client(['connect_timeout' => 3]);
     }
 
     /**
