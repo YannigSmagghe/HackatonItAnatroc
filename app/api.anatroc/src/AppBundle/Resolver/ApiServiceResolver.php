@@ -11,6 +11,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @package AppBundle\Resolver
  *
  * ApiServiceResolver is a service to found related services from user keywords.
+ * You must implement the interface in you api service and declare the class in app/config/services under
+ * parameter.api.classes and provide the fqcn of service.
  */
 class ApiServiceResolver
 {

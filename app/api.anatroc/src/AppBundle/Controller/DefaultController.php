@@ -4,8 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Api\Weather\WeatherInfoClimat;
 use AppBundle\Api\Transport\GoogleDirection;
-use AppBundle\Model\velov\VelovParc;
-use AppBundle\Service\Velov\Velov;
+
+use AppBundle\Model\Velov\VelovParc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
@@ -13,6 +13,7 @@ use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Service\Velov;
 
 
 //Remove from prod

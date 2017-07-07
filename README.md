@@ -11,6 +11,8 @@ Pour le dev
 autre terminal
 ⇒  npm start
 
+https://github.com/GoogleChrome/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html
+
 
 
 ## Setup project

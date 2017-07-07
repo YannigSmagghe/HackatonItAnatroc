@@ -3,8 +3,9 @@
 namespace AppBundle\Service\Velov;
 
 
+
 use AppBundle\Model\Localisation;
-use AppBundle\Model\velov\VelovArret;
+use AppBundle\Model\Velov\VelovArret;
 use AppBundle\Api\ApiKeywordInterface;
 
 
@@ -78,7 +79,7 @@ class Velov implements ApiKeywordInterface
     private function getFromOpenDataApi(): array
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->request("GET","https://public.opendatasoft.com/api/records/1.0/search/?dataset=station-velov-grand-lyon&lang=fr&rows=10&geofilter.distance=45.8520930694%2C4.34738897685%2C1000000000");
+        $response = $client->request("GET","https://public.opendatasoft.com/api/records/1.0/search/?dataset=station-Velov-grand-lyon&lang=fr&rows=10&geofilter.distance=45.8520930694%2C4.34738897685%2C1000000000");
 
 
         $body = $response->getBody();
@@ -115,7 +116,7 @@ class Velov implements ApiKeywordInterface
     {
         return [
             'velo',
-            'velov',
+            'Velov',
             'bike',
         ];
     }

@@ -3,10 +3,19 @@
 namespace AppBundle\Client;
 
 
+use AppBundle\Model\Localisation;
+
+
+/**
+ * ClientRequest is an object that you can use for you API services, this is class is simple for now.
+ *
+ * Class ClientRequest
+ * @package AppBundle\Client
+ */
 class ClientRequest
 {
     /**
-     * @var null|array
+     * @var null|Localisation
      */
     private $localisation = null;
 
@@ -16,18 +25,20 @@ class ClientRequest
     private $parameters = [];
 
     /**
-     * @return array|null
+     * Provide a Localisation object to obtain the current latitude and longitude client
+     *
+     * @return Localisation|null
      */
-    public function getLocalisation()
+    public function getLocalisation(): ?Localisation
     {
         return $this->localisation;
     }
 
     /**
-     * @param array|null $localisation
-     * @return ClientRequest
+     * @param Localisation $localisation
+     * @return $this
      */
-    public function setLocalisation(array $localisation)
+    public function setLocalisation(Localisation $localisation)
     {
         $this->localisation = $localisation;
         return $this;
