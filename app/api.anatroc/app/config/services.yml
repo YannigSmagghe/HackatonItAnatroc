@@ -5,6 +5,7 @@ parameters:
         classes:
             - AppBundle\Api\Transport\GoogleDirection
             - AppBundle\Service\Velov\Velov
+            - AppBundle\API\Weather\WeatherInfoClimat
         google_direction:
             url: "https://maps.googleapis.com/maps/api/directions/"
             key: "%google_api_key.direction%"
@@ -48,5 +49,5 @@ services:
         - "@service_container"
         - "%api%"
 
-    AppBundle\API\Weather\Weather1:
+    AppBundle\API\Weather\WeatherInfoClimat:
       public: true

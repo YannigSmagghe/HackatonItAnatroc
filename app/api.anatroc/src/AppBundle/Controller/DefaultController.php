@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Api\Weather\Weather1;
+use AppBundle\Api\Weather\WeatherInfoClimat;
 use AppBundle\Api\Transport\GoogleDirection;
 use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -41,6 +41,12 @@ class DefaultController extends Controller
                 //Return the formated data array
                 $apiData->addData(array_slice($data, 0, $nbVeloToSee));
             }
+
+            if ($service instanceof WeatherInfoClimat) {
+                //Define an array of WeatherInfoClimat object
+                $data = $this->get(WeatherInfoClimat::class)->getWeather();
+                $apiData->addData($data);
+            }
         }
 
         $serializer = SerializerBuilder::create()->build();
@@ -56,7 +62,7 @@ class DefaultController extends Controller
     {
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
-        $data = $this->get(Weather1::class)->getWeather();
+        $data = $this->get(WeatherInfoClimat::class)->getWeather();
         $apiData->addData($data);
 
         $serializer = SerializerBuilder::create()->build();
