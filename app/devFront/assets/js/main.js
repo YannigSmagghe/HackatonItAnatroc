@@ -30,11 +30,11 @@ $( document ).ready(function() {
         $('.result_type').text(data.data[0].type);
 
         $(".temps").hide();
-        $("."+data.data[0].data.temps+"").show();
+        $("#"+data.data[0].data.temps+"").show();
 
 
-        $('.temperature').text(data.data[0].data.temperature+'°');
-        $('.ville').text(data.data[0].data.ville);
+        $('#temperature').text(data.data[0].data.temperature+'°');
+        $('#ville').text(data.data[0].data.ville);
 
         $('.distance_result').text(data.data[2].data.distance);
         $('.start_address_result').text(data.data[2].data.start_address_name);

@@ -6,7 +6,7 @@
       "type": "meteo",
       "data": {
         "temperature": 20,
-         "temps" : "Nuageux",
+         "temps" : "Orageux",
         "ville" : "Angers"
       },
       "errors": []
