@@ -3,8 +3,8 @@ $( document ).ready(function() {
     //send input
     function resultPage() {
         // $("#search-input").hide();
-        $(".input-container").hide();
-        $(".result-container").show();
+        $(".input-container").fadeOut();
+        $(".result-container").fadeIn();
 
     }
     var timer = null;
@@ -16,7 +16,7 @@ $( document ).ready(function() {
         timer = setTimeout(resultPage, 3000);
         return timer;
     });
-
+    
     //Traitement Json
     $.getJSON( "test.json", function( data ) {
         // console.log(data.data[0].type);
@@ -44,36 +44,45 @@ $( document ).ready(function() {
         $(".connexion-container").hide();
         $(".input-container").show();
     });
-});
 
-//Title Animation
 
-$(function () {
+    //title Animation
 
-    $('.tlt').textillate({
+    $('.tlt').textillate( {
 
-        // enable looping
         loop: false,
 
-        // set whether or not to automatically start animating
         autoStart: true,
 
-
-        // in animation settings
         in: {
-                effect: 'flipInX',
-                delayScale: 1.5,
-                delay: 75,
-                sync: false,
-                shuffle: false,
-                reverse: false,
-                callback: function () {}
-
+            effect: "flipInX",
+            delayScale: 3,
+            delay: 50,
+            sync: false,
+            sequence: true,
+            reverse: false
         },
-
-
-
-        // set the type of token to animate (available types: 'char' and 'word')
         type: 'char'
     });
+
+
+    //Swap voice inpu
+    window.setInterval(function(){
+        var voiceSpan = '#interim_span';
+        if ($(voiceSpan).text().length > 0){
+            $('#search-input').hide();
+        }
+
+    }, 1000);
+
+    //Swap to result page
+    window.setInterval(function(){
+        var voiceSpan = '#final_span';
+        if ($(voiceSpan).text().length > 0){
+            resultPage();
+        }
+
+    }, 100);
+
+
 });
