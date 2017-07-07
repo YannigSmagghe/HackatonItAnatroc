@@ -2,9 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Api\Weather\Weather1;
+use AppBundle\Api\Weather\WeatherInfoClimat;
 use AppBundle\Api\Transport\GoogleDirection;
-use AppBundle\Service\Velov\Velov;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Model\ApiData;
 use AppBundle\Resolver\ApiServiceResolver;
@@ -12,6 +11,8 @@ use JMS\Serializer\SerializerBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Model\Velov\VelovParc;
+use AppBundle\Service\Velov\Velov;
 
 class DefaultController extends Controller
 {
@@ -39,7 +40,13 @@ class DefaultController extends Controller
                 $data = $this->get(Velov::class)->setVelovParc();
                 $nbVeloToSee = 15;
                 //Return the formated data array
-                $apiData->addData(array_slice($data, 0, $nbVeloToSee));
+                $apiData->addData(VelovParc::returnFirstsInArray($nbVeloToSee, $data));
+            }
+
+            if ($service instanceof WeatherInfoClimat) {
+                //Define an array of WeatherInfoClimat object
+                $data = $this->get(WeatherInfoClimat::class)->getWeather();
+                $apiData->addData($data);
             }
         }
 
@@ -56,7 +63,7 @@ class DefaultController extends Controller
     {
         $apiData = new ApiData();
         $apiData->setType(self::API_DATA_TYPE);
-        $data = $this->get(Weather1::class)->getWeather();
+        $data = $this->get(WeatherInfoClimat::class)->getWeather();
         $apiData->addData($data);
 
         $serializer = SerializerBuilder::create()->build();

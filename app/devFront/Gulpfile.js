@@ -25,17 +25,23 @@ const vars = {
                 './node_modules/font-awesome/less/*',
                 './node_modules/ionicons/less/*'
             ],
-            fonts_dest: 'assets/fonts/',
-            fonts_css_dest: 'assets/less/fonts/'
+            fonts_dest: 'assets/less/fonts/',
+            fonts_css_dest: 'assets/less/fonts-awesome/'
         }
     },
     lib_css: [
-        './node_modules/bootstrap/dist/css/bootstrap.css'
+        './node_modules/font-awesome/css/font-awesome.css',
+        './node_modules/bootstrap/dist/css/bootstrap.css',
+        './node_modules/textillate/assets/animate.css'
+
     ],
     lib_js: [
         './node_modules/jquery/dist/jquery.js',
-        './node_modules/bootstrap/dist/js/bootsrap.js'
-    ]
+        './node_modules/bootstrap/dist/js/bootsrap.js',
+        './node_modules/textillate/assets/jquery.fittext.js',
+        './node_modules/textillate/assets/jquery.lettering.js',
+        './node_modules/textillate/jquery.textillate.js'
+        ]
 };
 
 var path = {
@@ -95,7 +101,6 @@ gulp.task('vendor_js', function () {
         .pipe(sourcemaps.write('maps'))
         .pipe(gulp.dest(path.compiled_dir+'/js'));
 });
-
 
 /*
  * "watch" task

@@ -10,11 +10,8 @@ namespace AppBundle\Api\Weather;
 
 use AppBundle\Model\Weather\WeatherData;
 
-class Weather1 extends AbstractWeather
+class WeatherInfoClimat extends AbstractWeather
 {
-
-
-
     public function getWeather()
     {
         $response = $this->getGuzzle()->get('http://www.infoclimat.fr/public-api/gfs/json?_ll=45.77987,4.88471&_auth=UUsCFQ5wV3VVeFdgBnBWf1U9ADULfQIlBnoFZgtuAH1UP1AxUjIHYVM9WyYDLAUzBShXNAA7CTkFbgV9Xy1UNVE7Am4OZVcwVTpXMgYpVn1VewBhCysCJQZmBWULeABiVDFQPVIvB2RTOVs%2BAy0FMwU0VzIAIAkuBWcFZl87VD5RMgJuDmpXPVU5VzEGKVZ9VWMAaQsxAmsGYQVhCzIAMlQ%2FUGJSMgc0U21bMAMtBTMFMlczADsJNwVjBWJfO1QoUS0CHw4eVyhVeld3BmNWJFV7ADULagJu&_c=027a5f6d83c9c484d1f0ba18810b275f');
@@ -31,12 +28,11 @@ class Weather1 extends AbstractWeather
 
         $weather->setType($this->getType());
 
-        $weather->setTemperature($json->temperature->sol - 273.15);
+        $weather->setTemperature($json->temperature->sol - self::KELVIN_TO_CELSIUS);
 
         $weather->setWindForce($json->vent_moyen->{'10m'});
 
-
-        $weather->setWindDirection($json->vent_direction->{'10m'});
+        //$weather->setWindDirection($json->vent_direction->{'10m'});
 
         $weather->setWeather($this->getWeatherByParams($json->risque_neige,$json->pluie,$json->pluie_convective,$json->nebulosite->totale,$json->vent_moyen));
 
@@ -99,15 +95,15 @@ class Weather1 extends AbstractWeather
      */
     public function getWeatherByParams($neige, $pluie, $pluie_convective, $nebulosite, $vent_moyen)
     {
-        $weather = 0;
+        $weather = self::TYPE_SUN;
         if ($neige == 'oui') {
-            $weather = 4;
+            $weather = self::TYPE_SNOW;
         } elseif ($pluie_convective > 0 && $vent_moyen > 25) {
-            $weather = 3;
+            $weather = self::TYPE_STORM;
         } elseif ($pluie > 0) {
-            $weather = 2;
+            $weather = self::TYPE_RAIN;
         } elseif ($nebulosite > 50) {
-            $weather = 1;
+            $weather = self::TYPE_CLOUD;
         }
 
         return $weather;

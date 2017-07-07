@@ -1,7 +1,19 @@
 # HackatonItAnatroc
 Welcome !
-Backend
-develop
+lancer le projet :
+docker-compose up -d
+⇒  docker-compose exec node bash
+⇒  npm i
+⇒  node_modules/.bin/gulp
+
+Pour le dev
+⇒  node_modules/.bin/gulp watch
+autre terminal
+⇒  npm start
+
+https://github.com/GoogleChrome/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html
+
+
 
 ## Setup project
 
