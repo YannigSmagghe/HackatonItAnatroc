@@ -1,7 +1,17 @@
 # HackatonItAnatroc
 Welcome !
-Backend
-develop
+lancer le projet :
+docker-compose up -d
+⇒  docker-compose exec node bash
+⇒  npm i
+⇒  node_modules/.bin/gulp
+
+Pour le dev
+⇒  node_modules/.bin/gulp watch
+autre terminal
+⇒  npm start
+
+
 
 ## Setup project
 
