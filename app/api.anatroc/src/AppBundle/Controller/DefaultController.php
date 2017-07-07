@@ -41,6 +41,12 @@ class DefaultController extends Controller
                 //Return the formated data array
                 $apiData->addData(array_slice($data, 0, $nbVeloToSee));
             }
+
+            if ($service instanceof WeatherInfoClimat) {
+                //Define an array of WeatherInfoClimat object
+                $data = $this->get(WeatherInfoClimat::class)->getWeather();
+                $apiData->addData($data);
+            }
         }
 
         $serializer = SerializerBuilder::create()->build();
