@@ -2,9 +2,10 @@ $( document ).ready(function() {
 
     //send input
     function resultPage() {
-        // $("#search-input").hide();
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
+        google.maps.event.trigger(map, 'resize');
+        getLocation();
 
     }
     var timer = null;
@@ -16,21 +17,6 @@ $( document ).ready(function() {
         return timer;
     });
     
-    //Traitement Json
-    $.getJSON( "test.json", function( data ) {
-        // console.log(data.data[0].type);
-        // console.log(data.data[0].data.temperature);
-         //console.log(data.data[0].data.temps);
-
-        $('.result_type').text(data.data[0].type);
-
-        $(".temps").hide();
-        $("."+data.data[0].data.temps+"").show();
-
-
-        $('.temperature').text(data.data[0].data.temperature+'°');
-        $('.ville').text(data.data[0].data.ville);
-    });
 
 
 
@@ -39,8 +25,9 @@ $( document ).ready(function() {
         $(".connexion-container").show();
     });
 
-    $("#menu_acceuil").click(function() {
+    $("#menu_accueil").click(function() {
         $(".connexion-container").hide();
+        $(".meteo-container").hide();
         $(".input-container").show();
     });
 
