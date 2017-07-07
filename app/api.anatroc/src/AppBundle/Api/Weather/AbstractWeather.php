@@ -15,6 +15,24 @@ use GuzzleHttp\Client;
 
 abstract class AbstractWeather extends AbstractApi
 {
+    // Variable à soustraire à des degrés kelvin pour en faire des degrés celsius
+    const KELVIN_TO_CELSIUS = 273.15;
+
+    // Le temps retourné est "soleil"
+    const TYPE_SUN = 0;
+
+    // Le temps retourné est "nuage"
+    const TYPE_CLOUD = 1;
+
+    // Le temps retourné est "pluie"
+    const TYPE_RAIN = 2;
+
+    // Le temps retourné est "orage"
+    const TYPE_STORM = 3;
+
+    // Le temps retourné est "neige"
+    const TYPE_SNOW = 4;
+
     /**
      * @var string
      */
