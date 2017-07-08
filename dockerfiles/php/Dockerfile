@@ -8,7 +8,6 @@ RUN adduser --gecos "" --disabled-password $user
 RUN apt-get clean && apt-get update
 
 RUN apt-get install -y \
-        nginx \
         libmcrypt-dev \
         libxml2-dev \
         zlib1g-dev \
@@ -36,7 +35,6 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN pecl channel-update pecl
 RUN pecl install apcu-5.1.7 && docker-php-ext-enable apcu
 
-COPY conf/default.conf /etc/nginx/sites-enabled/default
 COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY conf/www.conf.default /usr/local/etc/php-fpm.d/www.conf.default
 
