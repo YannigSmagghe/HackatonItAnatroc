@@ -35,12 +35,16 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    AppBundle\Request\ClientRest:
+        public: true
+
     AppBundle\Service\Velov\Velov:
         public: true
 
     AppBundle\Api\Transport\GoogleDirection:
       public: true
       arguments:
+        - "@AppBundle\\Request\\ClientRest"
         - "%api%"
 
     AppBundle\Resolver\ApiServiceResolver:
