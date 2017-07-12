@@ -83,12 +83,17 @@ class GoogleDirection extends AbstractApi implements ApiKeywordInterface
         return $this->parameters;
     }
 
-    public function getDirection()
+    /**
+     * @param $from null|string|Localisation
+     * @param $to null|string|Localisation
+     * @return array
+     */
+    public function getDirection($from, $to)
     {
         // @todo Wait for input user feature to pass location
         $parameters = [
-            'origin' => 'Disneyland',
-            'destination' => 'Universal+Studios+Hollywood4'
+            'origin' => $from,
+            'destination' => $to
         ];
 
         // @todo Refactor later need to push for the moment
