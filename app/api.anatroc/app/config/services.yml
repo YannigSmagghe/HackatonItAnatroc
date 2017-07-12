@@ -55,3 +55,7 @@ services:
 
     AppBundle\Api\Weather\WeatherInfoClimat:
       public: true
+
+    AppBundle\ArgumentResolver\ClientRequestValueResolver:
+        tags:
+            - { name: controller.argument_value_resolver, priority: 150 }
