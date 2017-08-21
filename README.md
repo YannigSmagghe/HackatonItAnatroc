@@ -4,29 +4,42 @@ Welcome !
 Pré-requis :
 Docker :
 https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository <br/>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo nano /etc/apt/sources.list.d/additional-repositories.list<br/>
+sudo apt-get update <br/>
+sudo apt-get install docker-ce <br/>
 ajouter : 
 deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable
 <br/>
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER <br/>
 logout / login
 
 
-Docker compose :
-⇒ sudo curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-⇒ sudo chmod +x /usr/local/bin/docker-compose
+Docker compose : <br/>
+⇒ sudo curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose <br/>
+⇒ sudo chmod +x /usr/local/bin/docker-compose<br/>
 
 
-lancer le projet :
-⇒  docker-compose up -d
-⇒  docker-compose exec node bash
-⇒  npm i
-⇒  node_modules/.bin/gulp
+lancer le projet : <br/>
 
-Pour le dev
-⇒  node_modules/.bin/gulp watch
-autre terminal
-⇒  npm start
+
+```
+# Add this to the end of /etc/hosts
+
+172.41.0.10 front.anatroc
+```
+
+⇒  docker-compose up -d 
+⇒  docker-compose exec node bash <br/>
+⇒  npm i <br/>
+⇒  node_modules/.bin/gulp <br/>
+
+Go to http://front.anatroc<br/>
+
+Pour le dev  <br/>
+⇒  node_modules/.bin/gulp watch  <br/>
+autre terminal  <br/>
+⇒  npm start  <br/>
 
 https://github.com/GoogleChrome/webplatform-samples/blob/master/webspeechdemo/webspeechdemo.html
 

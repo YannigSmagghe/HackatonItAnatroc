@@ -14,6 +14,15 @@ function showPosition(position) {
     console.log(position.coords.latitude+ 'latitude');
 }
 
+/* ask geoloc*/
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        console.log("position", position)
+    });
+}else{
+    console.log('geolocalisation disabled');
+}
+
 
 /* MAP GOOGLE */
 
