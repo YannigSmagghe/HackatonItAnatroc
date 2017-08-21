@@ -32,24 +32,11 @@ Then execute these following command to enter in php container (back)
 (For back-end developers)
 You can execute domain.sh to add hostname for ip container
 
-## Reminder
+## Network configuration
 
-- The php container has static ip 172.20.0.10
-- The node container has static ip 172.20.0.11
+A reverse proxy with static ip `172.40.0.10` is used to serve api.anatroc and front.anatroc apps.
 
-### Package, tools, ...
-- php fpm 7.1
-- nginx
-- mysql 5.7
-- maildev
-- nvm
-- phpmyadmin
-- composer
+You need to edit your local `/etc/hosts` and add this configuration `172.40.0.10 api.anatric front.anatroc`
 
-### Port
-- 8080:80 nginx
-- 1080:80 maildev front web
-- 1025:25 maildev smpt
-- 10137:10137 Blackfire
-- 9000:9000 xdebug
-- 8888:80 phpmyadmin
+Front : [http://front.anatroc](http://front.anatroc)
+Api : [http://front.anatroc](http://front.anatroc)
