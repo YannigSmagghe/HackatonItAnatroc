@@ -58,5 +58,4 @@ typings/
 .env
 
 #idea
-.idea/*
-.idea/jsLibraryMappings.xml
+.idea/

@@ -1,66 +1,30 @@
 version: '3.0'
 services:
-    php:
-        build:
-            context: ./dockerfiles/php
-            args:
-                - user=${USER}
-        volumes:
-            - ./app/api.anatroc/:/usr/share/nginx/html
-        networks:
-            static-network:
-
-    nginx_php:
-        build:
-            context: dockerfiles/nginx/php
-        volumes:
-            - ./app/api.anatroc/:/usr/share/nginx/html
-        links:
-            - php
-        depends_on:
-            - php
-        networks:
-            static-network:
-
     node:
         build:
             context: ./dockerfiles/node
         volumes:
-            - ./app/devFront/:/app
+            - ./app:/app
         command: "tail -f /dev/null"
         networks:
             static-network:
 
-    nginx_node:
+    nginx:
         build:
             context: dockerfiles/nginx/node
         volumes:
-            - ./app/devFront/:/usr/share/nginx/html
+            - ./app:/usr/share/nginx/html
         depends_on:
             - node
         links:
             - node
         networks:
             static-network:
+                ipv4_address: 172.41.0.10
 
-    nginx_reverse_proxy:
-        build:
-            context: dockerfiles/nginx/proxy
-        ports:
-            - "443:443"
-            - "80:80"
-        links:
-            - nginx_node
-            - nginx_php
-        depends_on:
-            - nginx_node
-            - nginx_php
-        networks:
-            static-network:
-                ipv4_address: 172.40.0.10
 
 networks:
     static-network:
         ipam:
             config:
-                - subnet: 172.40.0.0/24
+                - subnet: 172.41.0.0/24
