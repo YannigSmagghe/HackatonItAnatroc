@@ -3,11 +3,11 @@ Welcome !
 
 Pré-requis :
 Docker :
-https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository
-sudo nano /etc/apt/sources.list.d/additional-repositories.list
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository <br/>
+sudo nano /etc/apt/sources.list.d/additional-repositories.list<br/>
 ajouter : 
 deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable
-
+<br/>
 sudo usermod -aG docker $USER
 logout / login
 
