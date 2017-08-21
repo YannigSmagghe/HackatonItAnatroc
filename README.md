@@ -1,7 +1,24 @@
 # HackatonItAnatroc
 Welcome !
+
+Pré-requis :
+Docker :
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository
+sudo nano /etc/apt/sources.list.d/additional-repositories.list
+ajouter : 
+deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable
+
+sudo usermod -aG docker $USER
+logout / login
+
+
+Docker compose :
+⇒ sudo curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+⇒ sudo chmod +x /usr/local/bin/docker-compose
+
+
 lancer le projet :
-docker-compose up -d
+⇒  docker-compose up -d
 ⇒  docker-compose exec node bash
 ⇒  npm i
 ⇒  node_modules/.bin/gulp
