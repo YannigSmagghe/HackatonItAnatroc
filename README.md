@@ -9,7 +9,7 @@ ajouter :
 deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable
 
 sudo usermod -aG docker $USER
-logout / login
+logout/login
 
 
 Docker compose :
